@@ -7,7 +7,7 @@ class BaseHTTP
     req = Net::HTTP::Post.new(uri.request_uri)
     set_headers(req, headers)
     req.form_data = body
-    puts("Post: #{uri}\n   Headers: #{headers}\n   Body: #{body}")
+    # puts("Post: #{uri}\n   Headers: #{headers}\n   Body: #{body}")
     http_request(uri, req)
   end
 
@@ -15,7 +15,7 @@ class BaseHTTP
     uri = URI.parse(endpoint)
     req = Net::HTTP::Get.new(uri.request_uri)
     set_headers(req, headers)
-    puts("Get: #{uri}\n   Headers: #{headers}")
+    # puts("Get: #{uri}\n   Headers: #{headers}")
     http_request(uri, req)
   end
 

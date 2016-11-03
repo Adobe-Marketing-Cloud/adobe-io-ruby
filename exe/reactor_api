@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require 'adobe_io'
+require "adobe_io"
 
 # Exit cleanly from an early interrupt
 Signal.trap("INT") { exit 1 }
@@ -22,4 +22,4 @@ OptionParser.new do |opts|
   # end
 end.parse!
 
-AdobeIo.new.access_token
+puts AdobeIo.access_token
