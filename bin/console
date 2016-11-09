@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "adobe_io"
-
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
-
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
-
+require 'bundler/setup'
+require 'adobe_io'
 require 'pry'
+
+def reload!
+  # Change 'gem_name' here too:
+  files = $LOADED_FEATURES.select { |feat| feat =~ /\/ruby-adobe-io\// }
+  files.each { |file| load file }
+end
+
 Pry.start

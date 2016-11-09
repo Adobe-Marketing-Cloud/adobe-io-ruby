@@ -22,4 +22,4 @@ OptionParser.new do |opts|
   # end
 end.parse!
 
-puts AdobeIo.access_token
+AdobeIo.main
