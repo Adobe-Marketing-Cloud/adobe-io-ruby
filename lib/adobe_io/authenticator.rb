@@ -43,11 +43,6 @@ module AdobeIo
     def jwt_payload
       {
         exp: expiry_time,
-        # iss: 'C42C917D550828520A4C98A6@AdobeOrg',
-        # sub: '1F2BF2BD581791B90A495E7B@techacct.adobe.com',
-        # iss: '08364A825824E04F0A494115@AdobeOrg',
-        # sub: '8A020D375829FEC10A49422C@techacct.adobe.com',
-        # sub: '3235A2C7582F3D390A494234@techacct.adobe.com',
         iss: ENV['IO_ISS'],
         sub: ENV['IO_SUB'],
         iat: expiry_time - 10000,
