@@ -1,16 +1,23 @@
 require 'adobe_io/version'
 require 'adobe_io/authenticator'
+require 'dry-configurable'
 
 module AdobeIo
+  extend ::Dry::Configurable
+
+  setting :logger, Logger.new(STDOUT), reader: true
+  setting :client_secret, nil, reader: true
+  setting :api_key, nil, reader: true
+  setting :ims_host, nil, reader: true
+  setting :private_key, nil, reader: true
+  setting :iss, nil, reader: true
+  setting :sub, nil, reader: true
+
   class AccessToken
     attr_reader :client_secret, :api_key, :ims_host, :private_key
 
     def initialize(options={})
       # load_config(options['config'])
-      @client_secret = ENV['IO_CLIENT_SECRET']
-      @api_key = ENV['IO_API_KEY']
-      @ims_host = ENV['IO_IMS_HOST']
-      @private_key = ENV['IO_PRIVATE_KEY']
     end
 
     def generate
@@ -19,30 +26,17 @@ module AdobeIo
 
     def fetch_access_token
       opts = {
-        client_secret: ENV['IO_CLIENT_SECRET'],
-        api_key: ENV['IO_API_KEY'],
-        ims_host: ENV['IO_IMS_HOST'],
-        private_key: ENV['IO_PRIVATE_KEY'],
+        client_secret: AdobeIo.client_secret,
+        api_key: AdobeIo.api_key,
+        ims_host: AdobeIo.ims_host,
+        private_key: AdobeIo.private_key,
         expiry_time: Time.now.to_i + (60 * 60 * 24)
       }
       response = Authenticator.new(opts).exchange_jwt
-      puts response
-
       response['access_token']
     rescue Exception => e
-      puts "There was an error with your request: #{e.message}"
+      AdobeIo.logger.info "There was an error with your request: #{e.message}"
       raise e
-    end
-
-    def get_url(url)
-      headers = {
-        "Accept" => "application/vnd.api+json;revision=1",
-        "Content-Type" => "application/json",
-        "X-Api-Key" => "Activation-DTM",
-        "Authorization" => "bearer #{access_token}"
-      }
-
-      BaseHTTP.get(url, headers)
     end
   end
 

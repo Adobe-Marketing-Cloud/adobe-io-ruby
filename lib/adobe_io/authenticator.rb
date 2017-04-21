@@ -20,7 +20,7 @@ module AdobeIo
         'Cache-Control' => 'no-cache'
       }
 
-      puts body
+      AdobeIo.logger.info body
       BaseHTTP.post url, body, headers
     end
 
@@ -43,8 +43,8 @@ module AdobeIo
     def jwt_payload
       {
         exp: expiry_time,
-        iss: ENV['IO_ISS'],
-        sub: ENV['IO_SUB'],
+        iss: AdobeIo.iss,
+        sub: AdobeIo.sub,
         iat: expiry_time - 10000,
         jti: '1479490921',
         aud: "https://#{ims_host}/c/#{api_key}",
