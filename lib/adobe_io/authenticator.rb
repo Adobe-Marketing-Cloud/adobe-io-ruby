@@ -48,7 +48,7 @@ module AdobeIo
         iat: expiry_time - 10000,
         jti: '1479490921',
         aud: "https://#{ims_host}/c/#{api_key}",
-        "https://#{ims_host}/s/ent_user_sdk" => true
+        "https://#{ims_host}/s/ent_activation_sdk" => true
       }
     end
   end
