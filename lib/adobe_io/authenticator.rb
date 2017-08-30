@@ -20,7 +20,7 @@ module AdobeIo
         'Cache-Control' => 'no-cache'
       }
 
-      AdobeIo.logger.info body
+      AdobeIo.logger.debug body
       BaseHTTP.post url, body, headers
     end
 

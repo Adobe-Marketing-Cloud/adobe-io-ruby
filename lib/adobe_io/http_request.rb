@@ -7,7 +7,7 @@ class BaseHTTP
     req = Net::HTTP::Post.new(uri.request_uri)
     set_headers(req, headers)
     req.form_data = body
-    AdobeIo.logger.info("Post: #{uri}\n   Headers: #{headers}\n   Body: #{body}")
+    AdobeIo.logger.debug("Post: #{uri}\n   Headers: #{headers}\n   Body: #{body}")
     http_request(uri, req)
   end
 
@@ -15,7 +15,7 @@ class BaseHTTP
     uri = URI.parse(endpoint)
     req = Net::HTTP::Get.new(uri.request_uri)
     set_headers(req, headers)
-    AdobeIo.logger.info("Get: #{uri}\n   Headers: #{headers}")
+    AdobeIo.logger.debug("Get: #{uri}\n   Headers: #{headers}")
     http_request(uri, req)
   end
 

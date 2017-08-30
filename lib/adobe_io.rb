@@ -31,7 +31,7 @@ module AdobeIo
       response = Authenticator.new(opts).exchange_jwt
       response['access_token']
     rescue Exception => e
-      AdobeIo.logger.info "There was an error with your request: #{e.message}"
+      AdobeIo.logger.error "There was an error with your request: #{e.message}"
       raise e
     end
   end
