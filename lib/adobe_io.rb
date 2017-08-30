@@ -16,10 +16,6 @@ module AdobeIo
   class AccessToken
     attr_reader :client_secret, :api_key, :ims_host, :private_key
 
-    def initialize(options={})
-      # load_config(options['config'])
-    end
-
     def generate
       @access_token ||= fetch_access_token
     end
