@@ -3,7 +3,7 @@ require 'adobe_io/http_request'
 
 module AdobeIo
   class Authenticator
-    attr_reader :client_secret, :api_key, :ims_host, :expiry_time
+    attr_reader :client_secret, :api_key, :ims_host, :expiry_time, :scope
 
     def initialize(opts)
       @client_secret = opts[:client_secret]
@@ -11,6 +11,7 @@ module AdobeIo
       @ims_host = opts[:ims_host]
       @expiry_time = opts[:expiry_time]
       @private_key = opts[:private_key]
+      @scope = opts[:scope] || "ent_activation_sdk"
     end
 
     def exchange_jwt
@@ -48,7 +49,7 @@ module AdobeIo
         iat: expiry_time - 10000,
         jti: '1479490921',
         aud: "https://#{ims_host}/c/#{api_key}",
-        "https://#{ims_host}/s/ent_activation_sdk" => true
+        "https://#{ims_host}/s/#{scope}" => true
       }
     end
   end

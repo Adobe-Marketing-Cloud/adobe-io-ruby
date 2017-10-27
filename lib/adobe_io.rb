@@ -12,9 +12,10 @@ module AdobeIo
   setting :private_key, nil, reader: true
   setting :iss, nil, reader: true
   setting :sub, nil, reader: true
+  setting :scope, nil, reader: true
 
   class AccessToken
-    attr_reader :client_secret, :api_key, :ims_host, :private_key
+    attr_reader :client_secret, :api_key, :ims_host, :private_key, :scope
 
     def generate
       @access_token ||= fetch_access_token
@@ -26,7 +27,8 @@ module AdobeIo
         api_key: AdobeIo.api_key,
         ims_host: AdobeIo.ims_host,
         private_key: AdobeIo.private_key,
-        expiry_time: Time.now.to_i + (60 * 60 * 24)
+        expiry_time: Time.now.to_i + (60 * 60 * 24),
+        scope: AdobeIo.scope
       }
       response = Authenticator.new(opts).exchange_jwt
       response['access_token']

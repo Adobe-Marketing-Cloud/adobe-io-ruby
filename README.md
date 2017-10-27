@@ -35,6 +35,7 @@ AdobeIo.configure do |config|
   config.private_key = ENV['IO_PRIVATE_KEY']
   config.iss = ENV['IO_ISS']
   config.sub = ENV['IO_SUB']
+  config.scope = ENV['IO_SCOPE']
 end
 ```
 You can set the log level to debug if you want more messaging
