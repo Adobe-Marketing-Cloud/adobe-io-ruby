@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'adobe_io'
+require 'ruby_adobe_io'
 require 'pry'
 
 def reload!

@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require "adobe_io"
+require "ruby_adobe_io"
 
 # Exit cleanly from an early interrupt
 Signal.trap("INT") { exit 1 }

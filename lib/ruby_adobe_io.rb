@@ -1,5 +1,5 @@
-require 'adobe_io/version'
-require 'adobe_io/authenticator'
+require 'ruby_adobe_io/version'
+require 'ruby_adobe_io/authenticator'
 require 'dry-configurable'
 
 module AdobeIo

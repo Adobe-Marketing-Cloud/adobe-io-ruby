@@ -1,5 +1,5 @@
 require 'jwt'
-require 'adobe_io/http_request'
+require 'ruby_adobe_io/http_request'
 
 module AdobeIo
   class Authenticator
