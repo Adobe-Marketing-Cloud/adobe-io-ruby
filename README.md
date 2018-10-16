@@ -7,7 +7,7 @@ Create JWT tokens and exchange for IMS access tokens for use with your Adobe I/O
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'ruby-adobe-io'
+gem 'adobe-io'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ruby-adobe-io
+    $ gem install adobe-io
 
 ## Usage
 
@@ -28,7 +28,7 @@ access_token.rb -v
 ### For you Rails app
 Create an initializer
 ```ruby
-AdobeIo.configure do |config|
+AdobeIO.configure do |config|
   config.client_secret = ENV['ADOBE_IO_CLIENT_SECRET']
   config.api_key = ENV['ADOBE_IO_API_KEY']
   config.ims_host = ENV['ADOBE_IO_IMS_HOST']
@@ -40,14 +40,14 @@ end
 ```
 You can set the log level to debug if you want more messaging
 ```ruby
-AdobeIo.configure do |config|
+AdobeIO.configure do |config|
   config.logger.level = Logger::WARN
 end
 ```
 
 Generate a new access token:
 ```ruby
-AdobeIo::AccessToken.new.generate
+AdobeIO::AccessToken.new.generate
 ```
 
 ## Development
@@ -58,7 +58,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://git.corp.adobe.com/reactor/ruby-adobe-io. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://git.corp.adobe.com/reactor/adobe-io-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

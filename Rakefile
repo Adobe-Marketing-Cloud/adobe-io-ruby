@@ -9,7 +9,7 @@ end
 
 desc "Open an irb session preloaded with this library"
 task :console do
-    sh "irb -rubygems -I lib -r ruby_adobe_io.rb"
+    sh "irb -rubygems -I lib -r adobe_io.rb"
 end
 
 task :default => :test

@@ -1,7 +1,7 @@
 require 'jwt'
-require 'ruby_adobe_io/http_request'
+require 'adobe_io/http_request'
 
-module AdobeIo
+module AdobeIO
   class Authenticator
     attr_reader :client_secret, :api_key, :ims_host, :expiry_time, :scope
 
@@ -21,7 +21,7 @@ module AdobeIo
         'Cache-Control' => 'no-cache'
       }
 
-      AdobeIo.logger.debug body
+      AdobeIO.logger.debug body
       BaseHTTP.post url, body, headers
     end
 
@@ -44,8 +44,8 @@ module AdobeIo
     def jwt_payload
       {
         exp: expiry_time,
-        iss: AdobeIo.iss,
-        sub: AdobeIo.sub,
+        iss: AdobeIO.iss,
+        sub: AdobeIO.sub,
         iat: expiry_time - 10000,
         jti: '1479490921',
         aud: "https://#{ims_host}/c/#{api_key}",

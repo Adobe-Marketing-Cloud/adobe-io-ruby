@@ -1,8 +1,8 @@
-require 'ruby_adobe_io/version'
-require 'ruby_adobe_io/authenticator'
+require 'adobe_io/version'
+require 'adobe_io/authenticator'
 require 'dry-configurable'
 
-module AdobeIo
+module AdobeIO
   extend ::Dry::Configurable
 
   setting :logger, Logger.new(STDOUT), reader: true
@@ -23,17 +23,17 @@ module AdobeIo
 
     def fetch_access_token
       opts = {
-        client_secret: AdobeIo.client_secret,
-        api_key: AdobeIo.api_key,
-        ims_host: AdobeIo.ims_host,
-        private_key: AdobeIo.private_key,
+        client_secret: AdobeIO.client_secret,
+        api_key: AdobeIO.api_key,
+        ims_host: AdobeIO.ims_host,
+        private_key: AdobeIO.private_key,
         expiry_time: Time.now.to_i + (60 * 60 * 24),
-        scope: AdobeIo.scope
+        scope: AdobeIO.scope
       }
       response = Authenticator.new(opts).exchange_jwt
       response['access_token']
     rescue Exception => e
-      AdobeIo.logger.error "There was an error with your request: #{e.message}"
+      AdobeIO.logger.error "There was an error with your request: #{e.message}"
       raise e
     end
   end

@@ -1,16 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby_adobe_io/version'
+require 'adobe_io/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby-adobe-io"
-  spec.version       = AdobeIo::VERSION
+  spec.name          = "adobe-io"
+  spec.version       = AdobeIO::VERSION
   spec.authors       = ["Jeffrey Walter"]
   spec.email         = ["jwalter@adobe.com"]
 
   spec.summary       = 'Ruby library to fetch an access token.'
-  spec.homepage      = 'TODO: Put your gems website or public repo URL here.'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -19,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
-  spec.executables   = ['access_token.rb']
+  spec.executables   = ['ims_access_token.rb']
   spec.require_paths = ["lib"]
 
   spec.add_dependency "jwt", "~> 1.5.6"

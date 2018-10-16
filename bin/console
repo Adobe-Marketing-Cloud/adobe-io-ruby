@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'ruby_adobe_io'
+require 'adobe_io'
 require 'pry'
 
 def reload!
   # Change 'gem_name' here too:
-  files = $LOADED_FEATURES.select { |feat| feat =~ /\/ruby-adobe-io\// }
+  files = $LOADED_FEATURES.select { |feat| feat =~ /\/adobe-io-ruby\// }
   files.each { |file| load file }
 end
 

@@ -2,12 +2,12 @@
 # frozen_string_literal: true
 
 require 'optparse'
-require "ruby_adobe_io"
+require 'adobe_io'
 
 # Exit cleanly from an early interrupt
 Signal.trap("INT") { exit 1 }
 
-AdobeIo.configure do |config|
+AdobeIO.configure do |config|
   config.client_secret = ENV['ADOBE_IO_CLIENT_SECRET']
   config.api_key = ENV['ADOBE_IO_API_KEY']
   config.ims_host = ENV['ADOBE_IO_IMS_HOST']
@@ -18,4 +18,4 @@ AdobeIo.configure do |config|
   config.logger.level = ARGV.include?('-v') ? Logger::DEBUG : Logger::INFO
 end
 
-puts AdobeIo::AccessToken.new.generate
+puts AdobeIO::AccessToken.new.generate
